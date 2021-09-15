@@ -1,3 +1,0 @@
-This file belongs to dev branch only.
-Sneaky changes
-Push change to remote
