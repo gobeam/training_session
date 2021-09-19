@@ -30,3 +30,6 @@ let person = {
 // console.log("Person Full name is: ", person.getFullName());
 // console.log("Person Age is: ", person.getAge());
 console.log("Current object is: ", person.getObject());
+
+
+
