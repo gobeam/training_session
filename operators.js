@@ -17,3 +17,12 @@ if (1 === "1") {
 
 // ternary operator
 console.log(1 === 1 ? "this statement is true" : "this statement is false");
+
+// && 
+// true, true = true
+// false, true = false
+// true, false = false
+
+// ||
+// true, true = true
+// false, true = true
