@@ -45,3 +45,6 @@ for (let i = 10; i >= 1; i--) {
   }
   console.log("Value of i is: ", i);
 }
+
+let todaysDate = new Date();
+console.log("🚀 ~ file: conditional.js ~ line 50 ~ todaysDate", todaysDate);
