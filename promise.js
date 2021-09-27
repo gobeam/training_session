@@ -117,3 +117,5 @@ const getDogApiV2 = () => {
 Promise.all([getDogApiV1(), getDogApiV2()])
   .then((result) => console.log(result))
   .catch((err) => console.log(err));
+
+  
