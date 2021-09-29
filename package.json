@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "dependencies": {
+    "request": "^2.88.2"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,8 +19,5 @@
   "bugs": {
     "url": "https://github.com/gobeam/training_session/issues"
   },
-  "homepage": "https://github.com/gobeam/training_session#readme",
-  "dependencies": {
-    "request": "^2.88.2"
-  }
+  "homepage": "https://github.com/gobeam/training_session#readme"
 }
