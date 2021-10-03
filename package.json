@@ -1,0 +1,19 @@
+{
+  "name": "training_session",
+  "version": "1.0.0",
+  "description": "node project demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gobeam/training_session.git"
+  },
+  "author": "Roshan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gobeam/training_session/issues"
+  },
+  "homepage": "https://github.com/gobeam/training_session#readme"
+}
