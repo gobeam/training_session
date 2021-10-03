@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/gobeam/training_session/issues"
   },
-  "homepage": "https://github.com/gobeam/training_session#readme"
+  "homepage": "https://github.com/gobeam/training_session#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
