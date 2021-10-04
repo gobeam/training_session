@@ -20,3 +20,16 @@ let users = [
 | /user/:id            |        PUT/PATCH             |   Update user by given unique ID       |
 | /user/:id            |        GET                   |   Get user by given unique ID       |
 | /user/:id            |        DELETE                |   Delete user by given unique ID       |
+
+
+server
+{
+    listen 80;
+    listen [::]:80;
+    server_name _;
+
+    location /
+    {
+        proxy_pass http://127.0.0.1:3000;
+    }
+}
