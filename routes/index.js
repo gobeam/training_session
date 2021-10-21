@@ -9,11 +9,11 @@ router.get("/users", getAllUser);
 // create new user, Request Method: Post
 router.post("/users", store);
 
-// get user by id, Request Method: Get
-router.get("/users/:id", getById);
+// // get user by id, Request Method: Get
+// router.get("/users/:id", getById);
 
 
-router.get("/hobby", getAll);
-router.post("/hobby", addHobby);
+// router.get("/hobby", getAll);
+// router.post("/hobby", addHobby);
 
 module.exports = router;
