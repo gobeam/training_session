@@ -1,18 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const UserController = require("../controller/user-controller");
-const HobbyController = require("../controller/hobby-controller");
+const { getAllUser, store, getById } = require("../controller/user-controller");
+const { getAll, addHobby } = require("../controller/hobby-controller");
 
 //get all users, Request Method: Get
-router.get("/users", UserController.getAllUser);
+router.get("/users", getAllUser);
 
 // create new user, Request Method: Post
-router.post("/users", UserController.store);
+router.post("/users", store);
 
 // get user by id, Request Method: Get
-router.get("/users/:id", UserController.getById);
+router.get("/users/:id", getById);
 
-router.get("/hobby", HobbyController.getAll);
-router.post("/hobby", HobbyController.addHobby);
+
+router.get("/hobby", getAll);
+router.post("/hobby", addHobby);
 
 module.exports = router;

@@ -1,17 +1,15 @@
 require("dotenv").config();
+require('./config/database');
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const route = require("./routes");
+const logMiddleware = require('./middleware/logger');
 
 app.use(bodyParser.json());
 
 //middleware
-app.use((req, res, next) => {
-  console.log("This is middleware! Body: ", req.body);
-  // res.json({message: 'returned from middleware!'})
-  next();
-});
+app.use(logMiddleware);
 
 app.use("/", route);
 
