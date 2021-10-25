@@ -9,7 +9,7 @@ const logMiddleware = require('./middleware/logger');
 app.use(bodyParser.json());
 
 //middleware
-app.use(logMiddleware);
+// app.use(logMiddleware);
 
 app.use("/", route);
 
