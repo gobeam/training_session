@@ -17,6 +17,7 @@ const UserValidator = checkSchema({
 
         let user;
         if (req.method == "PUT") {
+          
           user = await User.findOne({
             $and: [
               {
