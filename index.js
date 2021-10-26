@@ -1,30 +1,22 @@
-const http = require("http");
-const url = require("url");
+require("dotenv").config();
+require('./config/database');
+const express = require("express");
+const bodyParser = require("body-parser");
+const app = express();
+const route = require("./routes");
+const logMiddleware = require('./middleware/logger');
 
-const server = http.createServer((request, response) => {
-  let content = "";
-  let statusCode = 200;
-  switch (request.url) {
-    case "/":
-      content = "<h1>This is root page</h1>";
-      break;
-    case "/profile":
-      content = "<h1>This is profile page</h1>";
-      break;
-    case "/about":
-      content = "<h1>This is about page</h1>";
-      break;
-    default:
-      content = "<h1>This is 404 page</h1>";
-      statusCode = 404;
-  }
+app.use(bodyParser.json());
 
-  response.writeHead(statusCode, { "Content-Type": "text/html" });
-  response.write(content);
-  response.end();
-});
+//middleware
+// app.use(logMiddleware);
 
-const port = 3000;
-server.listen(port, () => {
-  console.log(`Server is running at port: ${port}`);
+app.use("/", route);
+
+
+//crud
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
