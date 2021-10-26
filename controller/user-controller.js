@@ -14,14 +14,32 @@ const store = async (req, res) => {
   res.status(201).json(user);
 };
 
-// const getById = (req, res) => {
-//   let user = users.find((user) => user.id === parseInt(req.params.id));
-//   if (!user) res.status(404).send("The user with the given ID was not found.");
-//   res.json(user);
-// };
+const getById = async (req, res) => {
+  const user = await User.findById(req.params.id);
+  res.json(user);
+};
+
+const update = async (req, res) => {
+  const user = await User.findById(req.params.id);
+  if(!user) {
+    return res.status(404).json({error: "Data not found"});
+  }
+  user.email = req.body.email;
+  user.name = req.body.name;
+  user.status = req.body.status;
+  user.phone = req.body.phone;
+  user.address = req.body.address;
+  user.age = req.body.age;
+  if(req.body.password) {
+    user.password = req.body.password;
+  }
+  await user.save();
+  return res.status(200).json(user);
+}
 
 module.exports = {
   getAllUser,
   store,
-  // getById,
+  getById,
+  update
 };

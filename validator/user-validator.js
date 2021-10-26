@@ -1,4 +1,6 @@
 const { checkSchema } = require("express-validator");
+const mongoose = require("mongoose");
+const User = mongoose.model("User");
 
 const UserValidator = checkSchema({
   email: {
@@ -10,6 +12,33 @@ const UserValidator = checkSchema({
       errorMessage: "Invalid email",
     },
     trim: true,
+    custom: {
+      options: async (value, { req, location, path }) => {
+
+        let user;
+        if (req.method == "PUT") {
+          user = await User.findOne({
+            $and: [
+              {
+                _id: {
+                  $ne: req.params.id,
+                },
+              },
+              {
+                email: value
+              }
+            ],
+          });
+        } else {
+          user = await User.findOne({ email: value });
+        }
+
+        if (user) {
+          throw new Error("Email is already taken!");
+        }
+        return true;
+      },
+    },
   },
   password: {
     trim: true,
@@ -52,4 +81,4 @@ const UserValidator = checkSchema({
   },
 });
 
- module.exports = UserValidator;
+module.exports = UserValidator;
