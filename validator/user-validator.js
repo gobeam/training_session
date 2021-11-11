@@ -14,25 +14,24 @@ const UserValidator = checkSchema({
     trim: true,
     custom: {
       options: async (value, { req, location, path }) => {
-
-        let user;
+        let filter = {};
         if (req.method == "PUT") {
-          user = await User.findOne({
+          filter = {
             $and: [
               {
                 _id: {
-                  $ne: req.params.id,
+                  $ne: mongoose.Types.ObjectId(req.params.id),
                 },
               },
               {
-                email: value
-              }
+                email: value,
+              },
             ],
-          });
+          };
         } else {
-          user = await User.findOne({ email: value });
+          filter = { email: value };
         }
-
+        const user = await User.findOne(filter);
         if (user) {
           throw new Error("Email is already taken!");
         }

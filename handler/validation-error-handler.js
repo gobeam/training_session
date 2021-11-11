@@ -5,7 +5,7 @@ const catchValidationError = (fn) => {
   return function (req, res, next) {
     const errors = validationResult(req);
     if (errors.isEmpty()) {
-      return fn(req, res, next).catch(next);
+      return fn(req, res, next);
     }
     let errorData = errors.mapped();
     return res.status(422).json(errorData);
