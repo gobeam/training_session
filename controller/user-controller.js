@@ -3,11 +3,16 @@ const User = mongoose.model("User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+const example = (req, res) => {
+  res.render("pages/example", { message: "Hello World IIMS", users: [{id: 1, name: "john"}, {id:2, name: "jane"}] });
+
+};
+
 const profile = (req, res) => {
-  let user = {...req.user.toJSON()};
+  let user = { ...req.user.toJSON() };
   delete user.password;
   res.json(user);
-}
+};
 
 const getAllUser = async (req, res) => {
   const users = await User.find();
@@ -56,22 +61,21 @@ const destroy = async (req, res) => {
 
 const login = async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
-  if(!user) {
+  if (!user) {
     return res.status(401).json({ error: "Invalid Email/Password" });
   }
   const matchPassword = await bcrypt.compare(req.body.password, user.password);
-  if(!matchPassword) {
+  if (!matchPassword) {
     return res.status(401).json({ error: "Invalid Email/Password" });
   }
-  const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY,{
-    expiresIn: "1 h"
+  const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
+    expiresIn: "1 h",
   });
 
   return res.status(200).json({
-    token
+    token,
   });
-
-}
+};
 
 module.exports = {
   getAllUser,
@@ -80,5 +84,6 @@ module.exports = {
   update,
   destroy,
   login,
-  profile
+  profile,
+  example,
 };
