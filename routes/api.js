@@ -8,15 +8,13 @@ const {
   destroy,
   login,
   profile,
-  example
-} = require("../controller/user-controller");
+} = require("../controller/api/user-controller");
 const UserValidator = require("../validator/user-validator");
 const LoginValidator = require("../validator/login-validator");
 const catchValidationError = require("../handler/validation-error-handler");
 const ObjectIdCheck = require("../middleware/object-id-check");
 const verifyToken = require("../middleware/auth");
 
-router.get("/example", example);
 router.post("/login", LoginValidator, catchValidationError(login));
 
 // create new user, Request Method: Post

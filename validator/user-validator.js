@@ -54,9 +54,9 @@ const UserValidator = checkSchema({
       errorMessage: "Name is required",
     },
   },
-  status: {
-    isBoolean: true,
-  },
+  // status: {
+  //   isBoolean: true,
+  // },
   phone: {
     trim: true,
     isLength: {

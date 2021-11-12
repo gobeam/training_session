@@ -2,11 +2,7 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
-const example = (req, res) => {
-  res.render("pages/example", { message: "Hello World IIMS", users: [{id: 1, name: "john"}, {id:2, name: "jane"}] });
-
-};
+const {create} = require('../../service/user-service');
 
 const profile = (req, res) => {
   let user = { ...req.user.toJSON() };
@@ -20,10 +16,7 @@ const getAllUser = async (req, res) => {
 };
 
 const store = async (req, res) => {
-  const { email, password, name, status, phone, address, age } = req.body;
-  const user = new User({ email, password, name, status, phone, address, age });
-  await user.save();
-  delete user.password;
+  const user = await create(req.body);
   res.status(201).json(user);
 };
 
@@ -85,5 +78,4 @@ module.exports = {
   destroy,
   login,
   profile,
-  example,
 };
