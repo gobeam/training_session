@@ -13,7 +13,6 @@ const registerView = (req, res) => {
 
 const register = async (req, res) => {
   try {
-    console.log(req.body, req);
     await create(req.body);
     res.redirect("/");
   } catch (e) {

@@ -9,11 +9,10 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 // const logMiddleware = require("./middleware/logger");
 
-app.use(
-  bodyParser.urlencoded({
-    extended: false,
-  })
-);
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(bodyParser.json());
 
 app.set("view engine", "ejs");
