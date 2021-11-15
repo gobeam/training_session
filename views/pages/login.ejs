@@ -1,0 +1,39 @@
+<%- include('../partials/html_header.ejs') %>
+<div class="row">
+  <div class="col-md-12">
+    <h1><%= pageTitle %></h1>
+    <%- include('../partials/alert.ejs') %>
+    <!-- <%= JSON.stringify(errors) %> -->
+    <form role="form" action="/login" method="post">
+      <div class="form-group">
+        <label for="exampleInputEmail1"> Email address </label>
+        <input
+          name="email"
+          type="email"
+          class="form-control <%= errors.email ? 'is-invalid' : '' %>"
+          id="exampleInputEmail1"
+          ,
+          value="<%= oldInput.email || '' %>"
+        />
+        <div class="invalid-feedback">
+          <%= errors.email ? errors.email.msg : "" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1"> Password </label>
+        <input
+          name="password"
+          type="password"
+          class="form-control <%= errors.password ? 'is-invalid' : '' %>"
+          id="exampleInputPassword1"
+        />
+        <div class="invalid-feedback">
+          <%= errors.password ? errors.password.msg : "" %>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
+</div>
+<%- include('../partials/html_footer.ejs') %>

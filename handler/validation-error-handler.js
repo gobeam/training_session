@@ -12,4 +12,20 @@ const catchValidationError = (fn) => {
   };
 };
 
-module.exports = catchValidationError;
+const catchFormValidationError = (fn) => {
+  return function (req, res, next) {
+    const errors = validationResult(req);
+    if (errors.isEmpty()) {
+      return fn(req, res, next);
+    }
+    let errorData = errors.mapped();
+    req.flash("oldInput", req.body);
+    req.flash("errors", errorData);
+    return res.redirect("back");
+  };
+};
+
+module.exports = {
+  catchValidationError,
+  catchFormValidationError,
+};

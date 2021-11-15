@@ -11,7 +11,7 @@ const {
 } = require("../controller/api/user-controller");
 const UserValidator = require("../validator/user-validator");
 const LoginValidator = require("../validator/login-validator");
-const catchValidationError = require("../handler/validation-error-handler");
+const {catchValidationError} = require("../handler/validation-error-handler");
 const ObjectIdCheck = require("../middleware/object-id-check");
 const verifyToken = require("../middleware/auth");
 

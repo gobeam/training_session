@@ -2,35 +2,76 @@
 <div class="row">
   <div class="col-md-12">
     <h1><%= pageTitle %></h1>
+    <!-- <%= JSON.stringify(errors) %> -->
     <form role="form" action="/register" method="post">
       <div class="form-group">
         <label for="exampleInputEmail1"> Email address </label>
         <input
           name="email"
           type="email"
-          class="form-control"
-          id="exampleInputEmail1"
+          class="form-control <%= errors.email ? 'is-invalid' : '' %>"
+          id="exampleInputEmail1",
+          value="<%= oldInput.email || '' %>"
         />
+        <div class="invalid-feedback">
+          <%= errors.email ? errors.email.msg : "" %>
+        </div>
       </div>
 
       <div class="form-group">
         <label for="name"> Name </label>
-        <input name="name" type="text" class="form-control" id="name" />
+        <input
+          name="name"
+          type="text"
+          class="form-control <%= errors.name ? 'is-invalid' : '' %>"
+          id="name"
+          value="<%= oldInput.name || '' %>"
+        />
+        <div class="invalid-feedback">
+          <%= errors.name ? errors.name.msg : "" %>
+        </div>
       </div>
 
       <div class="form-group">
         <label for="phone"> Phone </label>
-        <input name="phone" type="text" class="form-control" id="phone" />
+        <input
+          name="phone"
+          type="text"
+          class="form-control <%= errors.phone ? 'is-invalid' : '' %>"
+          id="phone"
+          value="<%= oldInput.phone || '' %>"
+        />
+        <div class="invalid-feedback">
+          <%= errors.phone ? errors.phone.msg : "" %>
+        </div>
       </div>
 
       <div class="form-group">
         <label for="address"> Address </label>
-        <input name="address" type="text" class="form-control" id="address" />
+        <input
+          name="address"
+          type="text"
+          class="form-control <%= errors.address ? 'is-invalid' : '' %>"
+          id="address"
+          value="<%= oldInput.address || '' %>"
+        />
+        <div class="invalid-feedback">
+          <%= errors.address ? errors.address.msg : "" %>
+        </div>
       </div>
 
       <div class="form-group">
         <label for="age"> Age </label>
-        <input name="age" type="number" class="form-control" id="age" />
+        <input
+          name="age"
+          type="number"
+          class="form-control <%= errors.age ? 'is-invalid' : '' %>"
+          id="age"
+          value="<%= oldInput.age || '' %>"
+        />
+        <div class="invalid-feedback">
+          <%= errors.age ? errors.age.msg : "" %>
+        </div>
       </div>
 
       <div class="form-group">
@@ -38,9 +79,12 @@
         <input
           name="password"
           type="password"
-          class="form-control"
+          class="form-control <%= errors.password ? 'is-invalid' : '' %>"
           id="exampleInputPassword1"
         />
+        <div class="invalid-feedback">
+          <%= errors.password ? errors.password.msg : "" %>
+        </div>
       </div>
       <button type="submit" class="btn btn-primary">Register</button>
     </form>

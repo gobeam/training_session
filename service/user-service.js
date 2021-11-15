@@ -3,7 +3,6 @@ const User = mongoose.model("User");
 
 const create = async (data) => {
   const { email, password, name, phone, address, age } = data;
-  console.log(data);
   const user = new User({
     email,
     password,
