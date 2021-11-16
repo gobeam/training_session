@@ -1,22 +1,15 @@
 <%- include('../partials/html_header.ejs') %>
 <div class="row">
   <div class="col-md-12">
+    <%- include('../partials/nav.ejs') %>
     <h2><%= pageTitle %></h2>
     <%- include('../partials/alert.ejs') %>
     <p><%= body %></p>
     <% if(isLogged) { %>
-        <p>
-            Welcome user <%= user.name %>!
-          </p>
-    <p>
-      <a href="/dashboard" class="btn btn-primary">Dashboard</a>
+    <p>Welcome user <%= user.name %>!</p>
+    <!-- <p>
       <a href="/logout" class="btn btn-primary">Logout</a>
-    </p>
-    <% } %>
-     <% if(!isLogged) { %>
-    <p>Please click <a href="/login">here</a> to login.</p>
-
-    <p>Please click <a href="/register">here</a> to register.</p>
+    </p> -->
     <% } %>
   </div>
 </div>

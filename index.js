@@ -35,12 +35,15 @@ app.use((req, res, next) => {
   res.locals.alert = req.flash("alert")[0];
   res.locals.errors = req.flash("errors")[0] || {};
   res.locals.oldInput = req.flash("oldInput")[0] || {};
+  res.locals.user = req.session && req.session.user ? req.session.user : null;
+  res.locals.isLogged = req.session && req.session.isLogged ? true : false;
   res.locals.flash = req.flash();
   next();
 });
 
 //middleware
 // app.use(logMiddleware);
+app.use(express.static('public'))
 
 app.use("/", webRoute);
 app.use("/api", apiRoute);
