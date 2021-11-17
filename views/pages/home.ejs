@@ -1,23 +1,23 @@
 <%- include('../partials/html_header.ejs') %>
-<div class="row">
-  <div class="col-md-12">
-    <h2><%= pageTitle %></h2>
-    <%- include('../partials/alert.ejs') %>
-    <p><%= body %></p>
-    <% if(isLogged) { %>
+<main>
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-lg-5">
+          <div class="card shadow-lg border-0 rounded-lg mt-5">
+            <div class="card-header"><h3 class="text-center font-weight-light my-4"><%= pageTitle %></h3></div>
+                  <div class="card-body">
+        <p><%= body %></p>
+                    
         <p>
-            Welcome user <%= user.name %>!
-          </p>
-    <p>
-      <a href="/dashboard" class="btn btn-primary">Dashboard</a>
-      <a href="/logout" class="btn btn-primary">Logout</a>
-    </p>
-    <% } %>
-     <% if(!isLogged) { %>
-    <p>Please click <a href="/login">here</a> to login.</p>
-
-    <p>Please click <a href="/register">here</a> to register.</p>
-    <% } %>
+        <a href="/login" class="btn btn-primary btn-lg btn-block">Login</a>
+        <a href="/register" class="btn btn-light btn-lg btn-block">Register</a>
+      </p>
+        </div>
+      </div>
   </div>
 </div>
+</div>
+</main>
+</div>
+<div id="layoutAuthentication_footer">
 <%- include('../partials/html_footer.ejs') %>

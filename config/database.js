@@ -10,3 +10,4 @@ const mongoose = require("mongoose");
 })();
 
 require("../model/user");
+require("../model/book");

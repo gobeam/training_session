@@ -1,93 +1,179 @@
 <%- include('../partials/html_header.ejs') %>
-<div class="row">
-  <div class="col-md-12">
-    <h1><%= pageTitle %></h1>
-    <!-- <%= JSON.stringify(errors) %> -->
-    <form role="form" action="/register" method="post">
-      <div class="form-group">
-        <label for="exampleInputEmail1"> Email address </label>
-        <input
-          name="email"
-          type="email"
-          class="form-control <%= errors.email ? 'is-invalid' : '' %>"
-          id="exampleInputEmail1",
-          value="<%= oldInput.email || '' %>"
-        />
-        <div class="invalid-feedback">
-          <%= errors.email ? errors.email.msg : "" %>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <label for="name"> Name </label>
-        <input
-          name="name"
-          type="text"
-          class="form-control <%= errors.name ? 'is-invalid' : '' %>"
-          id="name"
-          value="<%= oldInput.name || '' %>"
-        />
-        <div class="invalid-feedback">
-          <%= errors.name ? errors.name.msg : "" %>
-        </div>
-      </div>
+<main>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="card shadow-lg border-0 rounded-lg mt-5">
+          <div class="card-header">
+            <h3 class="text-center font-weight-light my-4"><%= pageTitle %></h3>
+          </div>
+          <div class="card-body">
+            <form action="/register" method="post">
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <div class="form-floating mb-3 mb-md-0">
+                    <input
+                      name="email"
+                      type="email"
+                      class="
+                        form-control
+                        <%=
+                        errors.email
+                        ?
+                        'is-invalid'
+                        :
+                        ''
+                        %>
+                      "
+                      id="exampleInputEmail1"
+                      ,
+                      value="<%= oldInput.email || '' %>"
+                    />
+                    <div class="invalid-feedback">
+                      <%= errors.email ? errors.email.msg : "" %>
+                    </div>
+                    <label for="inputFirstName">Email</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input
+                      name="name"
+                      type="text"
+                      class="
+                        form-control
+                        <%=
+                        errors.name
+                        ?
+                        'is-invalid'
+                        :
+                        ''
+                        %>
+                      "
+                      id="name"
+                      value="<%= oldInput.name || '' %>"
+                    />
+                    <div class="invalid-feedback">
+                      <%= errors.name ? errors.name.msg : "" %>
+                    </div>
+                    <label for="name">Name</label>
+                  </div>
+                </div>
+              </div>
 
-      <div class="form-group">
-        <label for="phone"> Phone </label>
-        <input
-          name="phone"
-          type="text"
-          class="form-control <%= errors.phone ? 'is-invalid' : '' %>"
-          id="phone"
-          value="<%= oldInput.phone || '' %>"
-        />
-        <div class="invalid-feedback">
-          <%= errors.phone ? errors.phone.msg : "" %>
-        </div>
-      </div>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <div class="form-floating mb-3 mb-md-0">
+                    <input
+                      name="address"
+                      type="text"
+                      class="
+                        form-control
+                        <%=
+                        errors.address
+                        ?
+                        'is-invalid'
+                        :
+                        ''
+                        %>
+                      "
+                      id="address"
+                      value="<%= oldInput.address || '' %>"
+                    />
+                    <div class="invalid-feedback">
+                      <%= errors.address ? errors.address.msg : "" %>
+                    </div>
+                    <label for="address">Address</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating mb-3 mb-md-0">
+                    <input
+                      name="age"
+                      type="number"
+                      class="form-control <%= errors.age ? 'is-invalid' : '' %>"
+                      id="age"
+                      value="<%= oldInput.age || '' %>"
+                    />
+                    <div class="invalid-feedback">
+                      <%= errors.age ? errors.age.msg : "" %>
+                    </div>
+                    <label for="age">Age</label>
+                  </div>
+                </div>
+              </div>
 
-      <div class="form-group">
-        <label for="address"> Address </label>
-        <input
-          name="address"
-          type="text"
-          class="form-control <%= errors.address ? 'is-invalid' : '' %>"
-          id="address"
-          value="<%= oldInput.address || '' %>"
-        />
-        <div class="invalid-feedback">
-          <%= errors.address ? errors.address.msg : "" %>
-        </div>
-      </div>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <div class="form-floating mb-3 mb-md-0">
+                    <input
+                      name="phone"
+                      type="text"
+                      class="
+                        form-control
+                        <%=
+                        errors.phone
+                        ?
+                        'is-invalid'
+                        :
+                        ''
+                        %>
+                      "
+                      id="phone"
+                      value="<%= oldInput.phone || '' %>"
+                    />
+                    <div class="invalid-feedback">
+                      <%= errors.phone ? errors.phone.msg : "" %>
+                    </div>
+                    <label for="phone">Phone</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input
+                      name="password"
+                      type="password"
+                      class="
+                        form-control
+                        <%=
+                        errors.password
+                        ?
+                        'is-invalid'
+                        :
+                        ''
+                        %>
+                      "
+                      id="password"
+                      value="<%= oldInput.password || '' %>"
+                    />
+                    <div class="invalid-feedback">
+                      <%= errors.password ? errors.password.msg : "" %>
+                    </div>
+                    <label for="password">Password</label>
+                  </div>
+                </div>
+              </div>
 
-      <div class="form-group">
-        <label for="age"> Age </label>
-        <input
-          name="age"
-          type="number"
-          class="form-control <%= errors.age ? 'is-invalid' : '' %>"
-          id="age"
-          value="<%= oldInput.age || '' %>"
-        />
-        <div class="invalid-feedback">
-          <%= errors.age ? errors.age.msg : "" %>
+              <div class="mt-4 mb-0">
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary btn-block"
+                    >Create Account</
+                  >
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer text-center py-3">
+            <div class="small">
+              <a href="/login">Have an account? Go to login</a>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="form-group">
-        <label for="exampleInputPassword1"> Password </label>
-        <input
-          name="password"
-          type="password"
-          class="form-control <%= errors.password ? 'is-invalid' : '' %>"
-          id="exampleInputPassword1"
-        />
-        <div class="invalid-feedback">
-          <%= errors.password ? errors.password.msg : "" %>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Register</button>
-    </form>
+    </div>
   </div>
+</main>
 </div>
+<div id="layoutAuthentication_footer">
 <%- include('../partials/html_footer.ejs') %>
