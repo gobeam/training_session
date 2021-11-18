@@ -16,7 +16,7 @@ const catchFormValidationError = (fn) => {
   return function (req, res, next) {
     const errors = validationResult(req);
     if (errors.isEmpty()) {
-      return fn(req, res, next);
+      return fn(req, res, next).catch((err) => next(err));
     }
     let errorData = errors.mapped();
     req.flash("oldInput", req.body);

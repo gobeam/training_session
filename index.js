@@ -43,9 +43,17 @@ app.use((req, res, next) => {
 
 //middleware
 // app.use(logMiddleware);
-app.use(express.static('public'))
+app.use(express.static("public"));
 
 app.use("/", webRoute);
+app.use(function (err, req, res, next) {
+  req.flash("oldInput", req.body);
+  req.flash("alert", {
+    type: "danger",
+    message: err.message || "There was some error please try again later!",
+  });
+  return res.redirect("back");
+});
 app.use("/api", apiRoute);
 
 const port = process.env.PORT || 3000;
