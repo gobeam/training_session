@@ -20,10 +20,11 @@ const {
   update,
   view,
   destroy,
-  createView
+  createView,
 } = require("../controller/system/book-controller");
 const BookValidator = require("../validator/book-validator");
 const ObjectIdCheck = require("../middleware/object-id-check");
+const { uploadImageHandler } = require("../handler/image-upload-handle");
 
 router.get("/", home);
 router.get("/register", registerView);
@@ -36,11 +37,19 @@ router.get("/dashboard", checkIfLoggedInMiddleware, dashboard);
 router.get("/books", checkIfLoggedInMiddleware, index);
 router.get("/books/create", checkIfLoggedInMiddleware, createView);
 router.get("/books/:id", checkIfLoggedInMiddleware, view);
-router.post("/books", [checkIfLoggedInMiddleware, BookValidator], store);
+router.post(
+  "/books",
+  [
+    checkIfLoggedInMiddleware,
+    uploadImageHandler.single("image"),
+    BookValidator,
+  ],
+  catchFormValidationError(store)
+);
 router.put(
   "/books/:id",
   [checkIfLoggedInMiddleware, ObjectIdCheck, BookValidator],
-  update
+  catchFormValidationError(update)
 );
 router.delete(
   "/books/:id",

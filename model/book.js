@@ -26,4 +26,12 @@ const Book = new Schema({
   },
 });
 
+function populateAuthor(next) {
+  this.populate("author");
+  next();
+}
+Book.pre("find", populateAuthor);
+Book.pre("findOne", populateAuthor);
+
+
 module.exports = mongoose.model("Book", Book);
