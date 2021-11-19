@@ -1,0 +1,14 @@
+<%- include('../../partials/html_header.ejs') %>
+<div class="container-fluid px-4">
+  <h2><%= pageTitle %></h2>
+  <%- include('../../partials/alert.ejs') %>
+  <form
+    method="POST"
+    action="/books/<%= book._id %>?_method=PUT"
+    enctype="multipart/form-data"
+  >
+    <!-- <input type="hidden" name="_method" value="PUT" /> -->
+    <%- include('./partial/form.ejs') %>
+  </form>
+</div>
+<%- include('../../partials/html_footer.ejs') %>

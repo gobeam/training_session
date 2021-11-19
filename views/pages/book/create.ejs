@@ -3,50 +3,7 @@
   <h2><%= pageTitle %></h2>
   <%- include('../../partials/alert.ejs') %>
   <form method="post" action="/books" enctype="multipart/form-data">
-    <div class="mb-3">
-      <label for="title" class="form-label">Title</label>
-      <input
-        type="text"
-        name="title"
-        class="form-control <%= errors.title ? 'is-invalid' : '' %>"
-        id="title"
-        placeholder="title"
-        value="<%= oldInput.title || '' %>"
-      />
-      <div class="invalid-feedback">
-        <%= errors.title ? errors.title.msg : "" %>
-      </div>
-    </div>
-
-    <div class="mb-3">
-      <label for="description" class="form-label">Description</label>
-      <input
-        type="text"
-        name="description"
-        class="form-control <%= errors.description ? 'is-invalid' : '' %>"
-        id="description"
-        placeholder="description"
-        value="<%= oldInput.description || '' %>"
-      />
-      <div class="invalid-feedback">
-        <%= errors.description ? errors.description.msg : "" %>
-      </div>
-    </div>
-
-    <div class="mb-3">
-      <label for="image" class="form-label">Image</label>
-      <input
-        class="form-control <%= errors.image ? 'is-invalid' : '' %>"
-        type="file"
-        id="image"
-        name="image"
-      />
-      <div class="invalid-feedback">
-        <%= errors.image ? errors.image.msg : "" %>
-      </div>
-    </div>
-
-    <button class="btn btn-primary" type="submit">Submit</button>
+    <%- include('./partial/form.ejs') %>
   </form>
 </div>
 <%- include('../../partials/html_footer.ejs') %>

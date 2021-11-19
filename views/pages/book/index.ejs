@@ -49,12 +49,13 @@
                   href="/books/<%= book.id %>/edit"
                   class="btn btn-primary btn-sm"
                   ><i class="fas fa-edit"></i
-                ></a>
-                <a
-                  href="/books/<%= book.id %>/delete"
-                  class="btn btn-danger btn-sm"
-                  ><i class="fas fa-trash"></i
-                ></a>
+                >Edit</a>
+                <form action="books/<%= book.id %>?_method=DELETE" method="POST">
+                  <button
+                    type="submit"
+                    class="btn btn-danger btn-sm"
+                    ><i class="fas fa-trash"></i> Delete</button
+                </form>
               </td>
             </tr>
             <% }); %>

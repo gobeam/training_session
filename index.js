@@ -8,8 +8,9 @@ const webRoute = require("./routes/web");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const flash = require("connect-flash");
+var methodOverride = require("method-override");
 // const logMiddleware = require("./middleware/logger");
-
+app.use(methodOverride("_method"));
 app.use(
   bodyParser.urlencoded({
     extended: true,
@@ -41,18 +42,24 @@ app.use((req, res, next) => {
   next();
 });
 
+
+
 //middleware
 // app.use(logMiddleware);
 app.use(express.static("public"));
 
 app.use("/", webRoute);
+
 app.use(function (err, req, res, next) {
-  req.flash("oldInput", req.body);
-  req.flash("alert", {
-    type: "danger",
-    message: err.message || "There was some error please try again later!",
-  });
-  return res.redirect("back");
+  if (err) {
+    req.flash("oldInput", req.body);
+    req.flash("alert", {
+      type: "danger",
+      message: err.message || "There was some error please try again later!",
+    });
+    return res.redirect("back");
+  }
+  next();
 });
 app.use("/api", apiRoute);
 

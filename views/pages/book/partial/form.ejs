@@ -1,0 +1,47 @@
+<div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input
+      type="text"
+      name="title"
+      class="form-control <%= errors.title ? 'is-invalid' : '' %>"
+      id="title"
+      placeholder="title"
+      value="<%= oldInput.title || book.title %>"
+    />
+    <div class="invalid-feedback">
+      <%= errors.title ? errors.title.msg : "" %>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <input
+      type="text"
+      name="description"
+      class="form-control <%= errors.description ? 'is-invalid' : '' %>"
+      id="description"
+      placeholder="description"
+      value="<%= oldInput.description || book.description %>"
+    />
+    <div class="invalid-feedback">
+      <%= errors.description ? errors.description.msg : "" %>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="image" class="form-label">Image</label>
+    <input
+      class="form-control <%= errors.image ? 'is-invalid' : '' %>"
+      type="file"
+      id="image"
+      name="image"
+    />
+    <div class="invalid-feedback">
+      <%= errors.image ? errors.image.msg : "" %>
+    </div>
+    <% if(book.image) { %>
+      <img src="/uploads/<%= book.image %>" alt="<%= book.title %>" class="img-thumbnail" />
+    <% } %>
+  </div>
+
+  <button class="btn btn-primary" type="submit">Submit</button>

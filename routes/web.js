@@ -21,6 +21,7 @@ const {
   view,
   destroy,
   createView,
+  editView,
 } = require("../controller/system/book-controller");
 const BookValidator = require("../validator/book-validator");
 const ObjectIdCheck = require("../middleware/object-id-check");
@@ -46,9 +47,15 @@ router.post(
   ],
   catchFormValidationError(store)
 );
+router.get("/books/:id/edit", checkIfLoggedInMiddleware, editView);
 router.put(
   "/books/:id",
-  [checkIfLoggedInMiddleware, ObjectIdCheck, BookValidator],
+  [
+    checkIfLoggedInMiddleware,
+    ObjectIdCheck,
+    uploadImageHandler.single("image"),
+    BookValidator,
+  ],
   catchFormValidationError(update)
 );
 router.delete(
